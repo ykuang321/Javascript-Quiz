@@ -1,72 +1,85 @@
 //Variables
 const startButton = document.getElementById("start-btn");
-const displayQuestion = document.getElementById("question");
 const answerButton = document.getElementsByClassName("answer");
+
+
+const displayQuestion = document.getElementById("question");
 var displayAnswers = document.querySelectorAll(".answer");
 var questionIndex = 0;
 //var currentAnswers =[];
 var timerCount;
 
-startButton.addEventListener('click', startGame);
+
 
 
 
 const javascriptQuestions = [
   //question 1
   {
-    question:"What is 2+2",
+    question:"Inside which HTML element do we put the JavaScript?",
     answers: [
-      'A: 3',
-      'B: 4',
-      'C: 5',
-      'D: 6'
+      'A: <javascript>',
+      'B: <js>',
+      'C: <scripting>',
+      'D: <script>'
     ],
-    correctAnswer: 'b'
+    correct: 'D'
   },
   //question 2
   {
-    question:"What is 2+3",
+    question:"What is the correct syntax to use an external script called “new.js?”",
     answers: [
-      'A: 3',
-      'B: 4',
-      'C: 5',
-      'D: 6'
+      'A: <script src="new.js">',
+      'B: <script name="new.js">',
+      'C: <script href="new.js">',
+      'D: <script content="new.js">'
     ],
-    correctAnswer: 'b'
+    correct: 'A'
   },
   //question 3
   {
-    question:"What is 2+4",
+    question:"How do you declare a JavaScript variable x?",
     answers: [
-      'A: 3',
-      'B: 4',
-      'C: 5',
-      'D: 6'
+      'A: define x;',
+      'B: variable x;',
+      'C: var x;',
+      'D: def x;'
     ],
-    correctAnswer: 'b'
+    correct: 'C'
   },
   //question 4
   {
-    question:"What is 2+5",
+    question:"When we don’t assign a value to a variable it will be?",
     answers: [
-      'A: 3',
-      'B: 4',
-      'C: 5',
-      'D: 6'
+      'A: null',
+      'B: undefined',
+      'C: ""',
+      'D: NaN'
     ],
-    correctAnswer: 'b'
+    correct: 'B'
   },
     //question 5
     {
-      question:"What is 2+6",
+      question:"To add an element to the end of an array you use:",
       answers: [
-        'A: 3',
-        'B: 4',
-        'C: 5',
-        'D: 6'
+        'A: pop()',
+        'B: add()',
+        'C: push()',
+        'D: addToEnd()'
       ],
-      correctAnswer: 'b'
-    }
+      correct: 'C'
+  },
+    //question 6
+    {
+      question:"A string can be converted to an array using which method:",
+      answers: [
+        'A: split()',
+        'B: slice()',
+        'C: splice()',
+        'D: piece()'
+      ],
+      correct: 'A'
+  }
 ]
 
 
@@ -93,7 +106,7 @@ countDownTimer();
 displayQuestions();
 }
 
-
+// display questions and answer function
 function displayQuestions(){
 
   //check timer and available questions
@@ -102,7 +115,7 @@ function displayQuestions(){
     return endQuiz();
   }
 
-   //display questions and answers
+  //display questions and answers
   else { 
     displayQuestion.innerText = javascriptQuestions[questionIndex].question;
 
@@ -110,35 +123,30 @@ function displayQuestions(){
     for (var i = 0; i<displayAnswers.length;i++){
     displayAnswers[i].innerText = currentAnswers[i];
     }
-    console.log('1questionIndex is ' + questionIndex);
-    //questionIndex++;
+    
+  questionIndex++;
+  console.log('1questionIndex is ' + questionIndex);
   }
 
 }
 
 
-
-document.addEventListener('click', function(event){
+//add event listener to get the user's answer
+function checkAnswer(event){
   if (timerCount === 0 || questionIndex >= javascriptQuestions.length){
     return endQuiz();
   }
 
-  var answerPicked = event.target;
-  const selectedAnswer = answerPicked.dataset['number'];
-  questionIndex++;
+  var answerChosen = event.target;
+  const selectedAnswer = answerChosen.dataset['number'];
+    if (selectedAnswer === javascriptQuestions[questionIndex].correct){
+      console.log("correct");
+    }
 
-  checkAnswer();
   displayQuestions();
-});
+};
 
 
-
-function checkAnswer() {
-
-
-
-
-}
 
 
 
@@ -154,3 +162,23 @@ function endQuiz(){
   alert("bye-bye")
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+answerButton[0].addEventListener('click', checkAnswer);
+answerButton[1].addEventListener('click', checkAnswer);
+answerButton[2].addEventListener('click', checkAnswer);
+answerButton[3].addEventListener('click', checkAnswer);
+
+
+
+startButton.addEventListener('click', startGame);

@@ -29,8 +29,7 @@ section p {
 
 }
 
-#start-btn,
-#answer-btn {
+#start-btn {
   width: 300px;
   background-color: blue;
   color: white;
