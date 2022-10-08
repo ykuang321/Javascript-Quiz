@@ -1,18 +1,17 @@
-//Variables
+//variables
 const startButton = document.getElementById("start-btn");
 const answerButton = document.getElementsByClassName("answer");
-
+const countDownTime = document.getElementById("timer");
 
 const displayQuestion = document.getElementById("question");
 var displayAnswers = document.querySelectorAll(".answer");
 var questionIndex = 0;
-//var currentAnswers =[];
-var timerCount;
+let timeCount = 60;
 
 
 
 
-
+//declare an array of object for the questions and answers
 const javascriptQuestions = [
   //question 1
   {
@@ -96,7 +95,6 @@ const javascriptQuestions = [
 
 function startGame(){
 
-
 startButton.classList.add('hide');
 
 document.getElementById("quiz").style.display = "flex";
@@ -110,9 +108,8 @@ displayQuestions();
 function displayQuestions(){
 
   //check timer and available questions
-  if (timerCount === 0 || questionIndex >= javascriptQuestions.length){
-   
-    return endQuiz();
+  if (timeCount === 0 || questionIndex >= javascriptQuestions.length) {
+    return 
   }
 
   //display questions and answers
@@ -123,9 +120,8 @@ function displayQuestions(){
     for (var i = 0; i<displayAnswers.length;i++){
     displayAnswers[i].innerText = currentAnswers[i];
     }
-    
-  questionIndex++;
-  console.log('1questionIndex is ' + questionIndex);
+
+    questionIndex++;
   }
 
 }
@@ -133,15 +129,20 @@ function displayQuestions(){
 
 //add event listener to get the user's answer
 function checkAnswer(event){
-  if (timerCount === 0 || questionIndex >= javascriptQuestions.length){
-    return endQuiz();
-  }
 
   var answerChosen = event.target;
   const selectedAnswer = answerChosen.dataset['number'];
-    if (selectedAnswer === javascriptQuestions[questionIndex].correct){
+
+  if (timeCount === 0 || questionIndex >= javascriptQuestions.length){
+    return endQuiz();
+  }
+
+  else if (selectedAnswer === javascriptQuestions[questionIndex].correct){
       console.log("correct");
-    }
+  }
+  else {
+    console.log("incorrect");
+  }
 
   displayQuestions();
 };
@@ -152,14 +153,26 @@ function checkAnswer(event){
 
 function countDownTimer(){
 
+  var timeInterval = setInterval(function() {
+    if (timeCount > 0) {
 
+      timeCount--;
+      countDownTime.innerText = 'Time Remaining: ' + timeCount + ' s';
+    }
+
+    else if (timeCount === 0) {
+      timeCount = 0;
+      countDownTime.innerText = timeCount;
+      endQuiz();
+    }      
+  }, 1000);
 }
 
 
 
 function endQuiz(){
 
-  alert("bye-bye")
+  alert("bye-bye");
 
 }
 
@@ -173,12 +186,9 @@ function endQuiz(){
 
 
 
-
+//event listener for start button and answer button
+startButton.addEventListener('click', startGame);
 answerButton[0].addEventListener('click', checkAnswer);
 answerButton[1].addEventListener('click', checkAnswer);
 answerButton[2].addEventListener('click', checkAnswer);
 answerButton[3].addEventListener('click', checkAnswer);
-
-
-
-startButton.addEventListener('click', startGame);
