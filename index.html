@@ -6,34 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Quiz</title>
   <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <header> 
     <h3 style="color:rgb(204, 89, 204) ;">View High Score</h3>
-    <h3 id = "timer">Time Remaining: </h3>
+    <time id = "timer" class="fa fa-clock-o fa-lg"></time>
   </header>
 
-  <section id = "start-page">
-    <h1 class = "question">Text Holder</h1>
-    <p>Text Holder</p>
-
-    <button id="start-btn">Start</button>
-
-  </section>
+  <div class="card">
 
 
-  <section id = "quiz">
-    <p id="question"></p>
-    <button class="answer" data-number="A"></button>
-    <button class="answer" data-number="B"></button>
-    <button class="answer" data-number="C"></button>
-    <button class="answer" data-number="D"></button>
-  </section>
+    <section id = "start-page">
+      <h1>Coding Quiz Challenge</h1>
+      <p>Try to answer the following six javascript related questions within the time limit.
+        <br>Keep in mind that incorrect answers will penalize your score/time
+        <br>by five seconds!
+      </p>
+  
+      <button id="start-btn">Start</button>
+  
+    </section>
+  
+  
+    <section id = "quiz">
+      <p id="question"></p>
+      <button class="answer" data-number="A"></button>
+      <button class="answer" data-number="B"></button>
+      <button class="answer" data-number="C"></button>
+      <button class="answer" data-number="D"></button>
+    </section>
+  
+    <section id = "end-page">
+      <h2>High Score</h2>
+      <button>Save</button>
+    </section>
 
-  <section id = "end-page">
-    <h2>High Score</h2>
-    <button>Save</button>
-  </section>
+
+
+
+
+
+
+  </div>
+
     
 
   <script src="./assets/script.js"></script>

@@ -145,7 +145,7 @@ function countDownTimer(){
     if (timeCount > 0) {
 
       timeCount--;
-      countDownTime.innerText = 'Time Remaining: ' + timeCount + ' s';
+      countDownTime.innerText = timeCount + ' s';
     }
 
     else if (timeCount === 0) {

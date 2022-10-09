@@ -1,86 +1,109 @@
 
+
+body {
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  background-color: #eff5f8;
+  color: #001b44;
+}
+
+
+
+
+/*define header container*/
 header {
   display: flex;
   justify-content: space-between;
   margin: 20px;
 }
 
-section{
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(0, 255, 102);
-  justify-content: baseline;
-  width: 80%;
-  height: 60%;
-  margin: 10%;
-}
 
+/*define section elements for all pages*/
 section h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bolder;
-
 }
 
 section p {
   text-align: center;
-  font-size: large;
+  font-size: 30px;
   font-weight: bolder;
-
 }
 
-#start-btn {
-  width: 300px;
-  background-color: blue;
-  color: white;
-  border: 5px solid blue;
-  padding: 10px;
-  margin: 20px;
-}
 
+/*define start page
 #start-page{
   display: flex;
   flex-direction: column;
-  background-color: rgb(0, 255, 102);
-  justify-content: baseline;
+  justify-content: center;
   width: 80%;
-  height: 60%;
+  height: 500px;
   margin: 10%;
 
 }
+*/
+
+#start-btn{
+  width: 300px;
+}
+
+button{
+  background-color: rgb(0, 255, 255);
+  border: 15px solid rgb(0, 255, 255);
+  color: black;
+  border-radius: 5px;
+  width: 500px;
+  height: 80px;
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 10px;
+  margin: 100px auto;
+  text-align: center;
+  display: block;
+}
+
+.card{
+  background-color:	#f1f1f1;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 30px auto;
+  padding: 20px;
+  width: 60vw;
+  display: block;
+}
+
+/*define quiz page*/
 
 #quiz{
   flex-direction: column;
-  background-color: rgb(0, 255, 102);
-  justify-content: baseline;
-  width: 80%;
-  height: 60%;
-  margin: 10%;
   display: none;
 }
 
+
 .answer {
-  width: 300px;
-  background-color: blue;
-  color: white;
-  border: 5px solid blue;
   padding: 10px;
   margin: 20px;
 }
 
 
-.answer:hover{
+
+
+
+/*define end page*/
+#end-page{
+  flex-direction: column;
+  display: none;
+}
+
+
+
+/*add hover feature*/
+
+button:hover{
   cursor:pointer;
-  box-shadow: 0 0.4rem 0 red;
+  box-shadow: 10px 5px 5px rgb(143, 142, 180);
   transform: translateY(-0.1rem);
   transition: transform 200ms;
 }
 
-#end-page{
-  flex-direction: column;
-  background-color: rgb(255, 145, 0);
-  width: 80%;
-  height: 60%;
-  margin: 10%;
-  display: none;
-}
