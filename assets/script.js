@@ -4,10 +4,15 @@ const answerButton = document.getElementsByClassName("answer");
 const countDownTime = document.getElementById("timer");
 
 const displayQuestion = document.getElementById("question");
+const saveButton = document.getElementById("save-btn");
+const finalScore = document.getElementById("final-score")
+var initial = document.getElementById("msg");
+
 var displayAnswers = document.querySelectorAll(".answer");
 var questionIndex = 0;
 var timeCount = 60;
 var scoreCount = 0;
+
 
 
 //declare an array of object for the questions and answers
@@ -95,12 +100,12 @@ displayQuestions();
 
 // display questions and answer function
 function displayQuestions(){
-
+  console.log('index is ' + questionIndex);
   //check timer and available questions
-  if (timeCount === 0 || questionIndex >= javascriptQuestions.length) {
-    return 
+  if (timeCount === 0 || questionIndex >= 6) {
+    return endQuiz()
   }
-
+ 
   //display questions and answers
   else { 
     displayQuestion.innerText = javascriptQuestions[questionIndex].question;
@@ -111,7 +116,6 @@ function displayQuestions(){
     }
   }
 }
-
 
 //add event listener to get the user's answer
 function checkAnswer(event){
@@ -135,9 +139,6 @@ function checkAnswer(event){
   displayQuestions();
 };
 
-
-
-
 //count down timer
 function countDownTimer(){
 
@@ -154,19 +155,23 @@ function countDownTimer(){
       endQuiz();
     }      
   }, 1000);
+
 }
 
 
 
 function endQuiz(){
 
-
+  finalScore.innerText ="Your final score is: " + scoreCount + " (out of 600)"
   document.getElementById("quiz").style.display = "none";
   document.getElementById("end-page").style.display = "flex";
 
 }
 
+function saveResults(){
 
+
+}
 
 
 
@@ -182,3 +187,4 @@ answerButton[0].addEventListener('click', checkAnswer);
 answerButton[1].addEventListener('click', checkAnswer);
 answerButton[2].addEventListener('click', checkAnswer);
 answerButton[3].addEventListener('click', checkAnswer);
+saveButton.addEventListener('click',saveResults)

@@ -94,9 +94,23 @@ button{
 #end-page{
   flex-direction: column;
   display: none;
+  text-align: center;
 }
 
+#save-btn{
+  width: 300px;
+}
 
+p{
+  justify-content: center;
+  display: inline;
+}
+
+#msg {
+  height: 30px;
+  width:100px;
+  background-color: whitesmoke;
+}
 
 /*add hover feature*/
 
