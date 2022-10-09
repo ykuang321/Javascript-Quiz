@@ -6,9 +6,8 @@ const countDownTime = document.getElementById("timer");
 const displayQuestion = document.getElementById("question");
 var displayAnswers = document.querySelectorAll(".answer");
 var questionIndex = 0;
-let timeCount = 60;
-
-
+var timeCount = 60;
+var scoreCount = 0;
 
 
 //declare an array of object for the questions and answers
@@ -81,16 +80,6 @@ const javascriptQuestions = [
   }
 ]
 
-
-
-
-
-
-
-
-
-
-
 // Functions
 
 function startGame(){
@@ -120,10 +109,7 @@ function displayQuestions(){
     for (var i = 0; i<displayAnswers.length;i++){
     displayAnswers[i].innerText = currentAnswers[i];
     }
-
-    questionIndex++;
   }
-
 }
 
 
@@ -132,25 +118,27 @@ function checkAnswer(event){
 
   var answerChosen = event.target;
   const selectedAnswer = answerChosen.dataset['number'];
-
+  console.log(timeCount);
   if (timeCount === 0 || questionIndex >= javascriptQuestions.length){
     return endQuiz();
   }
 
   else if (selectedAnswer === javascriptQuestions[questionIndex].correct){
-      console.log("correct");
+      scoreCount = scoreCount + 100;
   }
   else {
-    console.log("incorrect");
+    timeCount = timeCount - 5;
+    console.log(timeCount);
   }
 
+  questionIndex++;
   displayQuestions();
 };
 
 
 
 
-
+//count down timer
 function countDownTimer(){
 
   var timeInterval = setInterval(function() {
@@ -172,7 +160,9 @@ function countDownTimer(){
 
 function endQuiz(){
 
-  alert("bye-bye");
+
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("end-page").style.display = "flex";
 
 }
 
@@ -186,7 +176,7 @@ function endQuiz(){
 
 
 
-//event listener for start button and answer button
+//event listener for start button, answer buttons, and saveButton
 startButton.addEventListener('click', startGame);
 answerButton[0].addEventListener('click', checkAnswer);
 answerButton[1].addEventListener('click', checkAnswer);

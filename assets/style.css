@@ -75,3 +75,12 @@ section p {
   transform: translateY(-0.1rem);
   transition: transform 200ms;
 }
+
+#end-page{
+  flex-direction: column;
+  background-color: rgb(255, 145, 0);
+  width: 80%;
+  height: 60%;
+  margin: 10%;
+  display: none;
+}
