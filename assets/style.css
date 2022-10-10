@@ -32,17 +32,7 @@ section p {
 }
 
 
-/*define start page
-#start-page{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 80%;
-  height: 500px;
-  margin: 10%;
 
-}
-*/
 
 #start-btn{
   width: 300px;
@@ -86,10 +76,6 @@ button{
   margin: 20px;
 }
 
-
-
-
-
 /*define end page*/
 #end-page{
   flex-direction: column;
@@ -99,11 +85,6 @@ button{
 
 #save-btn{
   width: 300px;
-}
-
-p{
-  justify-content: center;
-  display: inline;
 }
 
 #msg {
@@ -121,3 +102,11 @@ button:hover{
   transition: transform 200ms;
 }
 
+
+#answerResults{
+  display: none;
+  width:100%;
+  border-top-style:solid;
+  border-top-width:thin;
+  margin-top: 5px;
+}

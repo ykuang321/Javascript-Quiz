@@ -10,13 +10,13 @@
 </head>
 <body>
   <header> 
-    <h3 style="color:rgb(204, 89, 204) ;">View High Score</h3>
+    <h3 id ="view-result-btn" style="color:rgb(204, 89, 204) ;">View High Score</h3>
     <time id="timer" class="fa fa-clock-o fa-lg"></time>
   </header>
 
   <div class="card">
 
-
+    <!-- Start Page -->
     <section id = "start-page">
       <h1>Coding Quiz Challenge</h1>
       <p>Try to answer the following six javascript related questions within the time limit.
@@ -25,31 +25,33 @@
       </p>
   
       <button id="start-btn">Start</button>
-  
-    </section>
-  
-  
+    
+    </section>  
+
+    <!-- Quiz Pages -->
     <section id = "quiz">
       <p id="question"></p>
       <button class="answer" data-number="A"></button>
       <button class="answer" data-number="B"></button>
       <button class="answer" data-number="C"></button>
       <button class="answer" data-number="D"></button>
-    </section>
-  
+    </section>  
 
+    <!-- End Page -->
     <section id = "end-page">
       <h2>All Done!</h2>
       <h3 id="final-score"></h3>
       <p>Enter initials: 
-        <textarea name="initial" id="msg"></textarea>
+        <textarea id="msg"></textarea>
       </p>      
       <button id="save-btn">Save Score</button>
     </section>
 
-  </div>
+    <div id="answerResults"></div>
 
-    
+  </div>    
+
+
 
   <script src="./assets/script.js"></script>
 </body>

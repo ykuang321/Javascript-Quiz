@@ -4,6 +4,7 @@ const answerButton = document.getElementsByClassName("answer");
 const countDownTime = document.getElementById("timer");
 
 const displayQuestion = document.getElementById("question");
+const displayAnswerResult = document.getElementById("answerResults");
 const saveButton = document.getElementById("save-btn");
 const finalScore = document.getElementById("final-score")
 var initial = document.getElementById("msg");
@@ -15,11 +16,12 @@ var scoreCount = 0;
 
 
 
+
 //declare an array of object for the questions and answers
 const javascriptQuestions = [
   //question 1
   {
-    question:"Inside which HTML element do we put the JavaScript?",
+    question:"Q1: Inside which HTML element do we put the JavaScript?",
     answers: [
       'A: <javascript>',
       'B: <js>',
@@ -30,7 +32,7 @@ const javascriptQuestions = [
   },
   //question 2
   {
-    question:"What is the correct syntax to use an external script called “new.js?”",
+    question:"Q2: What is the correct syntax to use an external script called “new.js?”",
     answers: [
       'A: <script src="new.js">',
       'B: <script name="new.js">',
@@ -41,7 +43,7 @@ const javascriptQuestions = [
   },
   //question 3
   {
-    question:"How do you declare a JavaScript variable x?",
+    question:"Q3: How do you declare a JavaScript variable x?",
     answers: [
       'A: define x;',
       'B: variable x;',
@@ -52,7 +54,7 @@ const javascriptQuestions = [
   },
   //question 4
   {
-    question:"When we don’t assign a value to a variable it will be?",
+    question:"Q4: When we don’t assign a value to a variable it will be?",
     answers: [
       'A: null',
       'B: undefined',
@@ -63,7 +65,7 @@ const javascriptQuestions = [
   },
     //question 5
     {
-      question:"To add an element to the end of an array you use:",
+      question:"Q5: To add an element to the end of an array you use:",
       answers: [
         'A: pop()',
         'B: add()',
@@ -74,7 +76,7 @@ const javascriptQuestions = [
   },
     //question 6
     {
-      question:"A string can be converted to an array using which method:",
+      question:"Q6: A string can be converted to an array using which method:",
       answers: [
         'A: split()',
         'B: slice()',
@@ -100,7 +102,7 @@ displayQuestions();
 
 // display questions and answer function
 function displayQuestions(){
-  console.log('index is ' + questionIndex);
+
   //check timer and available questions
   if (timeCount === 0 || questionIndex >= 6) {
     return endQuiz()
@@ -115,28 +117,49 @@ function displayQuestions(){
     displayAnswers[i].innerText = currentAnswers[i];
     }
   }
+
+  //add even listener
+  answerButton[0].addEventListener('click', checkAnswer);
+  answerButton[1].addEventListener('click', checkAnswer);
+  answerButton[2].addEventListener('click', checkAnswer);
+  answerButton[3].addEventListener('click', checkAnswer);
 }
+
 
 //add event listener to get the user's answer
 function checkAnswer(event){
 
+  answerButton[0].removeEventListener('click', checkAnswer);
+  answerButton[1].removeEventListener('click', checkAnswer);
+  answerButton[2].removeEventListener('click', checkAnswer);
+  answerButton[3].removeEventListener('click', checkAnswer);
+  
   var answerChosen = event.target;
   const selectedAnswer = answerChosen.dataset['number'];
-  console.log(timeCount);
+  
   if (timeCount === 0 || questionIndex >= javascriptQuestions.length){
     return endQuiz();
   }
 
   else if (selectedAnswer === javascriptQuestions[questionIndex].correct){
       scoreCount = scoreCount + 100;
+      displayAnswerResult.innerText = "Correct"
+      document.getElementById("answerResults").style.display = "block";
   }
   else {
     timeCount = timeCount - 5;
     console.log(timeCount);
+    displayAnswerResult.innerText = "Wrong, the correct answer is " + javascriptQuestions[questionIndex].correct
+    document.getElementById("answerResults").style.display = "block";
   }
 
-  questionIndex++;
-  displayQuestions();
+  // 2 seconds delay to display the results  
+  setTimeout(() => {
+    questionIndex++;
+    document.getElementById("answerResults").style.display = "none";
+    displayQuestions();
+  }, 2000)
+
 };
 
 //count down timer
@@ -154,12 +177,11 @@ function countDownTimer(){
       countDownTime.innerText = timeCount;
       endQuiz();
     }      
-  }, 1000);
+  }, 2000);
 
 }
 
-
-
+//end quiz 
 function endQuiz(){
 
   finalScore.innerText ="Your final score is: " + scoreCount + " (out of 600)"
@@ -168,23 +190,17 @@ function endQuiz(){
 
 }
 
-function saveResults(){
+function saveResults(event){
+  event.preventDefault();
 
+  var quizResult = {
+    initial: initial.value.trim(),
+    score: scoreCount
+};
 
+  localStorage.setItem("High Score", JSON.stringify(quizResult));
 }
 
-
-
-
-
-
-
-
-
 //event listener for start button, answer buttons, and saveButton
-startButton.addEventListener('click', startGame);
-answerButton[0].addEventListener('click', checkAnswer);
-answerButton[1].addEventListener('click', checkAnswer);
-answerButton[2].addEventListener('click', checkAnswer);
-answerButton[3].addEventListener('click', checkAnswer);
+startButton.addEventListener('click', startGame),{once: true}
 saveButton.addEventListener('click',saveResults)
