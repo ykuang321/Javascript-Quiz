@@ -7,7 +7,7 @@ const displayQuestion = document.getElementById("question");
 const displayAnswerResult = document.getElementById("answerResults");
 const saveButton = document.getElementById("save-btn");
 const finalScore = document.getElementById("final-score")
-var initial = document.getElementById("msg");
+const initial = document.getElementById("msg");
 
 var displayAnswers = document.querySelectorAll(".answer");
 var questionIndex = 0;
@@ -118,7 +118,7 @@ function displayQuestions(){
     }
   }
 
-  //add even listener
+  //add even listener to get the user's answer
   answerButton[0].addEventListener('click', checkAnswer);
   answerButton[1].addEventListener('click', checkAnswer);
   answerButton[2].addEventListener('click', checkAnswer);
@@ -126,9 +126,9 @@ function displayQuestions(){
 }
 
 
-//add event listener to get the user's answer
-function checkAnswer(event){
 
+function checkAnswer(event){
+  //remove event listener to avoid user accidentally click the answer again while waiting 
   answerButton[0].removeEventListener('click', checkAnswer);
   answerButton[1].removeEventListener('click', checkAnswer);
   answerButton[2].removeEventListener('click', checkAnswer);
@@ -167,7 +167,6 @@ function countDownTimer(){
 
   var timeInterval = setInterval(function() {
     if (timeCount > 0) {
-
       timeCount--;
       countDownTime.innerText = timeCount + ' s';
     }
@@ -177,7 +176,7 @@ function countDownTimer(){
       countDownTime.innerText = timeCount;
       endQuiz();
     }      
-  }, 2000);
+  }, 1000);
 
 }
 
@@ -193,14 +192,21 @@ function endQuiz(){
 function saveResults(event){
   event.preventDefault();
 
-  var quizResult = {
-    initial: initial.value.trim(),
-    score: scoreCount
-};
+  if (initial === "") {
+    return;
+  }
 
-  localStorage.setItem("High Score", JSON.stringify(quizResult));
+  else{
+    var quizResult = {
+      initial: initial.value.trim(),
+      score: scoreCount
+    };
+  
+    localStorage.setItem("High Score", JSON.stringify(quizResult));
+  }
+
 }
 
 //event listener for start button, answer buttons, and saveButton
-startButton.addEventListener('click', startGame),{once: true}
+startButton.addEventListener('click', startGame)
 saveButton.addEventListener('click',saveResults)
