@@ -10,7 +10,7 @@
 </head>
 <body>
   <header> 
-    <h3 id ="view-result-btn" style="color:rgb(204, 89, 204) ;">View High Score</h3>
+    <h3 id ="process"></h3>
     <time id="timer" class="fa fa-clock-o fa-lg"></time>
   </header>
 
@@ -42,11 +42,18 @@
     <section id = "end-page">
       <h2>All Done!</h2>
       <h3 id="final-score"></h3>
-      <p>Enter initials: 
+      <p>Enter initials:
         <input type="text" name="initial-text" id="initial-text" />
       </p>      
       <button id="save-btn">Save Score</button>
-      <p>Score List</p>
+      <button id="return-btn1">Return to Start</button>
+    </section>
+
+    <!-- Score List Page -->
+    <section id = "score-list-page">
+      <h2>Score List</h2>
+      <button id="clear-btn">Clear Score</button>
+      <button id="return-btn2">Return to Start</button>
       <ul id="score-list"></ul>
     </section>
 

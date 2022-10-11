@@ -27,6 +27,7 @@ section h1 {
 
 section p {
   text-align: center;
+  justify-content: center;
   font-size: 30px;
   font-weight: bolder;
 }
@@ -34,9 +35,7 @@ section p {
 
 
 
-#start-btn{
-  width: 300px;
-}
+
 
 button{
   background-color: rgb(0, 255, 255);
@@ -83,16 +82,34 @@ button{
   text-align: center;
 }
 
-#save-btn,
+#score-list-page{
+  flex-direction: column;
+  display: none;
+  text-align: center;
+}
+
+#start-btn,
 #view-score{
   width: 300px;
 }
 
-#msg {
+#save-btn,
+#return-btn1,
+#return-btn2,
+#clear-btn{
+  width: 300px;
+  margin: 50px auto;
+}
+
+
+#initial-text {
   height: 30px;
-  width:100px;
+  width:150px;
   background-color: whitesmoke;
 }
+
+
+
 
 /*add hover feature*/
 
@@ -119,10 +136,6 @@ button:hover{
 
 
 
-
-
-
-
 ul {
   list-style-type: none;
   padding: 0;
@@ -137,9 +150,10 @@ li {
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 5px;
-  background-color:  #001b44;
-  color: white;
-  font-size: 1.5em;
+  background-color: grey;
+  color: black;
+  font-size: 35px;
+  font-weight: bold;
   line-height: 1.5;
 }
 
@@ -152,14 +166,4 @@ li::after {
   content: " ";
   display: block;
   clear: both;
-}
-
-li button {
-  float: right;
-  border: none;
-  height: 40px;
-  cursor: pointer;
-  background-color: #ff7034;
-  color: white;
-  font-size: 1em;
 }
