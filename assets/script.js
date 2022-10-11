@@ -1,4 +1,4 @@
-//variables
+//declare variables
 const startButton = document.getElementById("start-btn");
 const answerButton = document.getElementsByClassName("answer");
 const countDownTime = document.getElementById("timer");
@@ -7,7 +7,7 @@ const displayQuestion = document.getElementById("question");
 const displayAnswerResult = document.getElementById("answerResults");
 const saveButton = document.getElementById("save-btn");
 const finalScore = document.getElementById("final-score")
-const initial = document.getElementById("msg");
+
 
 var displayAnswers = document.querySelectorAll(".answer");
 var questionIndex = 0;
@@ -158,7 +158,7 @@ function checkAnswer(event){
     questionIndex++;
     document.getElementById("answerResults").style.display = "none";
     displayQuestions();
-  }, 2000)
+  }, 0)
 
 };
 
@@ -180,6 +180,39 @@ function countDownTimer(){
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //end quiz 
 function endQuiz(){
 
@@ -187,25 +220,74 @@ function endQuiz(){
   document.getElementById("quiz").style.display = "none";
   document.getElementById("end-page").style.display = "flex";
 
+
 }
 
-function saveResults(event){
-  event.preventDefault();
 
-  if (initial === "") {
+
+var initial = document.querySelector("#initial-text");
+var scoreList = document.querySelector("#score-list");
+
+var highScore =[];
+
+function saveResults(event){
+  init();
+  event.preventDefault();
+  var highScoreText = initial.value.trim() + " - " + scoreCount;
+  console.log(highScoreText);
+
+  if(highScoreText === "") {
     return;
   }
 
-  else{
-    var quizResult = {
-      initial: initial.value.trim(),
-      score: scoreCount
-    };
-  
-    localStorage.setItem("High Score", JSON.stringify(quizResult));
+   // Add new high score to high score list array, and then clear the input
+  highScore.push(highScoreText);
+  initial.value ="";
+
+  localStorage.setItem("scoreList", JSON.stringify(highScore));
+
+  renderScores();
+}
+
+function renderScores(){
+  // Clear todoList element and update todoCountSpan
+  scoreList.innerHTML = "";
+
+
+
+  // Render a new li for each score
+  for (var i = 0; i < highScore.length; i++) {
+    var highScoreTemp = highScore[i];
+
+    var li = document.createElement("li");
+    li.textContent = highScoreTemp;
+    li.setAttribute("data-index", i);
+    scoreList.appendChild(li);
   }
 
 }
+
+
+function init() {
+  // Get stored todos from localStorage
+  var storedHighScore = JSON.parse(localStorage.getItem("highScore"));
+
+  // If todos were retrieved from localStorage, update the todos array to it
+  if (storedHighScore !== null) {
+    highScore = storedhighScore;
+  }
+
+  // This is a helper function that will render todos to the DOM
+  renderScores();
+}
+
+
+
+
+
+
+
+
 
 //event listener for start button, answer buttons, and saveButton
 startButton.addEventListener('click', startGame)

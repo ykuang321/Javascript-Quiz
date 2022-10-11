@@ -83,7 +83,8 @@ button{
   text-align: center;
 }
 
-#save-btn{
+#save-btn,
+#view-score{
   width: 300px;
 }
 
@@ -109,4 +110,56 @@ button:hover{
   border-top-style:solid;
   border-top-width:thin;
   margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  background-color: white;
+}
+
+
+
+
+li {
+  height: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color:  #001b44;
+  color: white;
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
+li:before {
+  content: "\200B";
+  position: absolute;
+}
+
+li::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+li button {
+  float: right;
+  border: none;
+  height: 40px;
+  cursor: pointer;
+  background-color: #ff7034;
+  color: white;
+  font-size: 1em;
 }
