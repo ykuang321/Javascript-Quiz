@@ -6,7 +6,10 @@ const viewScoreList = document.getElementById("view-score");
 const returnStart1 = document.getElementById("return-btn1");
 const returnStart2 = document.getElementById("return-btn2");
 const clearScore = document.getElementById("clear-btn");
+var initial = document.querySelector("#initial-text");
+var scoreList = document.querySelector("#score-list");
 
+var highScore =[];
 
 
 const countDownTime = document.getElementById("timer");
@@ -100,6 +103,11 @@ const javascriptQuestions = [
 
 function startGame(){
 
+  //initialize variables
+  questionIndex = 0;
+  timeCount = 60;
+  scoreCount =0;
+console.log(timeCount);
 document.getElementById("quiz").style.display = "flex";
 document.getElementById("start-page").style.display = "none";
 document.getElementById("end-page").style.display = "none";
@@ -191,38 +199,6 @@ function countDownTimer(){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //end quiz 
 function endQuiz(){
 
@@ -235,13 +211,6 @@ function endQuiz(){
   clearInterval(timeInterval);
 
 }
-
-
-
-var initial = document.querySelector("#initial-text");
-var scoreList = document.querySelector("#score-list");
-
-var highScore =[];
 
 function saveResults(event){
 
@@ -269,6 +238,13 @@ function viewScore(){
   document.getElementById("start-page").style.display = "none";
   document.getElementById("quiz").style.display = "none";
   document.getElementById("end-page").style.display = "none";
+
+  var storedScore = JSON.parse(localStorage.getItem("scoreList"));
+
+  // If todos were retrieved from localStorage, update the high Score array to it
+  if (storedScore !== null) {
+    highScore = storedScore;
+  }
   
   // Clear todoList element and update todoCountSpan
   scoreList.innerHTML = "";
@@ -283,41 +259,19 @@ function viewScore(){
     scoreList.appendChild(li);
   }
 
-
 }
-
-
-function init() {
-  // Get stored score from localStorage
-  var storedScore = JSON.parse(localStorage.getItem("scoreList"));
-
-  // If todos were retrieved from localStorage, update the high Score array to it
-  if (storedScore !== null) {
-    highScore = storedScore;
-  }
-
-  // This is a helper function that will render todos to the DOM
-  viewScore();
-}
-
-
-
-
-
 
 
 function clearScoreList () {
 
-
   highScore.splice(0, highScore.length);
 
-
+  localStorage.setItem("scoreList", JSON.stringify(highScore));
+  viewScore();
 }
 
-
+//end of the game, display the start game page
 function endGame(){
-
-  console.log("hell yeah");
   document.getElementById("quiz").style.display = "none";
   document.getElementById("start-page").style.display = "block";
   document.getElementById("end-page").style.display = "none";
