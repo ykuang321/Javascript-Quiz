@@ -13,7 +13,6 @@ var highScore =[];
 
 
 const countDownTime = document.getElementById("timer");
-
 const displayQuestion = document.getElementById("question");
 const displayAnswerResult = document.getElementById("answerResults");
 const finalScore = document.getElementById("final-score");
@@ -107,14 +106,13 @@ function startGame(){
   questionIndex = 0;
   timeCount = 60;
   scoreCount =0;
-console.log(timeCount);
-document.getElementById("quiz").style.display = "flex";
-document.getElementById("start-page").style.display = "none";
-document.getElementById("end-page").style.display = "none";
-document.getElementById("score-list-page").style.display = "none";
+  document.getElementById("quiz").style.display = "flex";
+  document.getElementById("start-page").style.display = "none";
+  document.getElementById("end-page").style.display = "none";
+  document.getElementById("score-list-page").style.display = "none";
 
-countDownTimer();
-displayQuestions();
+  countDownTimer();
+  displayQuestions();
 }
 
 // display questions and answer function

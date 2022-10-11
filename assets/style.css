@@ -157,13 +157,3 @@ li {
   line-height: 1.5;
 }
 
-li:before {
-  content: "\200B";
-  position: absolute;
-}
-
-li::after {
-  content: " ";
-  display: block;
-  clear: both;
-}
