@@ -1,14 +1,10 @@
-
-
+/*define body container*/
 body {
   font-size: 30px;
   font-family: "Roboto", sans-serif;
   background-color: #eff5f8;
   color: #001b44;
 }
-
-
-
 
 /*define header container*/
 header {
@@ -32,11 +28,7 @@ section p {
   font-weight: bolder;
 }
 
-
-
-
-
-
+/*define buttons */
 button{
   background-color: rgb(0, 255, 255);
   border: 15px solid rgb(0, 255, 255);
@@ -52,6 +44,7 @@ button{
   display: block;
 }
 
+/*define card container */
 .card{
   background-color:	#f1f1f1;
   border: 2px solid black;
@@ -63,16 +56,9 @@ button{
 }
 
 /*define quiz page*/
-
 #quiz{
   flex-direction: column;
   display: none;
-}
-
-
-.answer {
-  padding: 10px;
-  margin: 20px;
 }
 
 /*define end page*/
@@ -82,17 +68,20 @@ button{
   text-align: center;
 }
 
+/*define score list page*/
 #score-list-page{
   flex-direction: column;
   display: none;
   text-align: center;
 }
 
+/*define start button and view score button*/
 #start-btn,
 #view-score{
   width: 300px;
 }
 
+/*define save button, return 1 & 2 button, and clear score button*/
 #save-btn,
 #return-btn1,
 #return-btn2,
@@ -101,18 +90,14 @@ button{
   margin: 50px auto;
 }
 
-
+/*define initial text filed*/
 #initial-text {
   height: 30px;
   width:150px;
   background-color: whitesmoke;
 }
 
-
-
-
 /*add hover feature*/
-
 button:hover{
   cursor:pointer;
   box-shadow: 10px 5px 5px rgb(143, 142, 180);
@@ -120,7 +105,13 @@ button:hover{
   transition: transform 200ms;
 }
 
+/*class for answer buttons*/
+.answer {
+  padding: 10px;
+  margin: 20px;
+}
 
+/*define answer result bar*/
 #answerResults{
   display: none;
   width:100%;
@@ -129,21 +120,12 @@ button:hover{
   margin-top: 5px;
 }
 
-
-
-
-
-
-
-
+/*ul and li for score list page*/
 ul {
   list-style-type: none;
   padding: 0;
   background-color: white;
 }
-
-
-
 
 li {
   height: 50px;
