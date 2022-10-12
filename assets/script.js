@@ -10,8 +10,8 @@ const countDownTime = document.getElementById("timer");
 const displayQuestion = document.getElementById("question");
 const displayAnswerResult = document.getElementById("answerResults");
 const finalScore = document.getElementById("final-score");
+const initial = document.querySelector("#initial-text");
 
-var initial = document.querySelector("#initial-text");
 var scoreList = document.querySelector("#score-list");
 var displayAnswers = document.querySelectorAll(".answer");
 var questionIndex = 0;
@@ -158,12 +158,11 @@ function checkAnswer(event){
   }
   else {
     timeCount = timeCount - 5;
-    console.log(timeCount);
     displayAnswerResult.innerText = "Wrong, the correct answer is " + javascriptQuestions[questionIndex].correct
     document.getElementById("answerResults").style.display = "block";
   }
 
-  // 2 seconds delay to display the results  
+  // 2 seconds delay to display the results when user select the answer
   setTimeout(() => {
     questionIndex++;
     document.getElementById("answerResults").style.display = "none";
@@ -199,17 +198,17 @@ function endQuiz(){
 
   finalScore.innerText ="Your final score is: " + scoreCount + " (out of 600)";
   clearInterval(timeInterval);
-
 }
 
 //save results function
 function saveResults(event){
   event.preventDefault();
 
-  var highScoreText = initial.value.trim() + " - " + scoreCount;
-  console.log(highScoreText);
+  //add user initial and score into a variable
+  var highScoreText = initial.value.trim() + " : " + scoreCount;
 
-  if(highScoreText === "") {
+  //return if the initial is null
+  if (initial.value === ""){    
     return;
   }
 
@@ -238,7 +237,7 @@ function viewScore(){
     highScore = storedScore;
   }
   
-  //clear score List element and update todoCountSpan
+  //clear score list element 
   scoreList.innerHTML = "";
 
   // Render a new li for each score added
@@ -254,7 +253,7 @@ function viewScore(){
 //clear score history function
 function clearScoreList () {
 
-  //remove all score history and set to local storge
+  //remove all score history and set to local storage
   highScore.splice(0, highScore.length);
   localStorage.setItem("scoreList", JSON.stringify(highScore));
   viewScore();
