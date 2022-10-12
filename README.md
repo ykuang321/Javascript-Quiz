@@ -1,7 +1,6 @@
 # Create a Javascript Quiz
 
 ## Project Task
-
 Build a timed coding quiz with multiple-choice questions to become familiar with the coding tests and apply the skills
 
 
@@ -17,27 +16,27 @@ At this page, the user can select the options below:
 
 ### *Quiz Page:*
 At this page:
-1. A series of JavaScript questions will be present to the user with 4 answers.
-2. A sixty seconds timer will start counting down on the upper right corner.
-3. Once the answer is selected, it will pop up a bar indicates the results (correct or incorrect) of the answer for 2 seconds and then move to the next questions.
+1. A series of JavaScript questions will be presented to the user with 4 answers.
+2. A 60 seconds timer will start counting down.
+3. Once the answer is selected, a bar pop up to indicate the results (correct or incorrect) of the answer for 2     seconds and then move to the next questions.
 4. If the answer is correct, a 100 point will be added to the score.
-5. If the answer is wrong, five seconds will be subtract from the countdown timer
+5. If the answer is incorrect, 5 seconds will be subtracted from the countdown timer
 6. If all questions are answered or the time (60 seconds) elapsed, it will move to the -> *End Page*
 
 
 ### *End Page:*
 At this page:
-1. The counter timer will be stopped.
+1. The count down timer will be stopped.
 2. The result of the quiz will be shown. 
-3. Provide the user to record the score (with their initials) or try again -> *Start Page*.
-4. Return to the main page.
+3. Provide an option to record the score with user's initials -> *Score List Page*.
+4. Return to the main page -> *Start Page*
 
 
 ### *Score List Page:*
 At this page, the user can:
 1. View the score history.
 2. Clear the history from the database.
-3. Return to the main page.
+3. Return to the start page.
 
 
 ## User Story
@@ -52,8 +51,8 @@ stores high scores so that the student can gauge his progress compares to the pe
 ```
 This application should include:
 1. A timer starts when the quiz starts.
-2. A series of questions will be present to the user.
-3. If the user selects the wrong answer, time will be subtracted from the clock.
+2. A series of questions will be presented to the user.
+3. If the user selects the incorrect answer, 5 seconds will be subtracted from the clock.
 4. Quiz is completed when all questions are answered or the timer reaches 0.
 5. User can save their initials and score at the end of the quiz
 ```

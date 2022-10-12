@@ -151,11 +151,14 @@ function checkAnswer(event){
     return endQuiz();
   }
 
+  //if user select the correct answer, add 100 to the score
   else if (selectedAnswer === javascriptQuestions[questionIndex].correct){
       scoreCount = scoreCount + 100;
       displayAnswerResult.innerText = "Correct"
       document.getElementById("answerResults").style.display = "block";
   }
+
+  //if user select the wrong answer, subtract 5 seconds from the timer
   else {
     timeCount = timeCount - 5;
     displayAnswerResult.innerText = "Wrong, the correct answer is " + javascriptQuestions[questionIndex].correct
@@ -216,7 +219,7 @@ function saveResults(event){
   highScore.push(highScoreText);
   initial.value ="";
   localStorage.setItem("scoreList", JSON.stringify(highScore));
-  
+
   viewScore();
 }
 
@@ -232,7 +235,7 @@ function viewScore(){
   //check local storage to see if any score is stored
   var storedScore = JSON.parse(localStorage.getItem("scoreList"));
 
-  //if score were retrieved from localStorage, update the high Score array
+  //if score were retrieved from local storage, update the high score array
   if (storedScore !== null) {
     highScore = storedScore;
   }
@@ -247,7 +250,7 @@ function viewScore(){
     li.textContent = highScoreTemp;
     li.setAttribute("data-index", i);
     scoreList.appendChild(li);
-  }
+  }  
 }
 
 //clear score history function
@@ -270,9 +273,9 @@ function endGame(){
 }
 
 //event listener for buttons
-startButton.addEventListener('click', startGame)
-saveButton.addEventListener('click',saveResults)
-viewScoreList.addEventListener('click', viewScore)
-clearScore.addEventListener('click', clearScoreList)
-returnStart1.addEventListener('click',endGame)
-returnStart2.addEventListener('click',endGame)
+startButton.addEventListener('click', startGame);
+saveButton.addEventListener('click',saveResults);
+viewScoreList.addEventListener('click', viewScore);
+clearScore.addEventListener('click', clearScoreList);
+returnStart1.addEventListener('click',endGame);
+returnStart2.addEventListener('click',endGame);
